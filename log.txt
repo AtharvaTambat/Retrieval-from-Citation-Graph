@@ -1,0 +1,11 @@
+Building citation graph...
+Adding nodes: 100%|██████████████████████████████████████████████████████████████████████████| 6545/6545 [00:00<00:00, 300541.05paper/s]
+Building edges: 100%|███████████████████████████████████████████████████████████████████████████| 6545/6545 [00:38<00:00, 169.60paper/s]
+Graph analysis:
+Number of nodes: 6545
+Number of edges: 26154
+Number of isolated nodes: 634
+Average in-degree: 3.9960
+Average out-degree: 3.9960
+Saved degree histogram to: degree_histogram.png
+Diameter of largest component: 13
