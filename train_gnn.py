@@ -176,16 +176,6 @@ def main_train(args):
         G = pickle.load(f)
     print(f"Graph loaded: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
 
-    # Check for isolated nodes - GNN might struggle if many exist
-    isolated_nodes = [n for n, d in G.degree() if d == 0]
-    if isolated_nodes:
-        print(f"Warning: Found {len(isolated_nodes)} isolated nodes. Removing them for training.")
-        G.remove_nodes_from(isolated_nodes)
-        print(f"Graph after removing isolates: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
-        if G.number_of_nodes() == 0:
-             print("Error: No nodes left after removing isolates. Cannot train.")
-             return
-
     graph_titles = set(G.nodes())
 
     # Load content only for nodes remaining in the graph
@@ -236,6 +226,11 @@ def main_train(args):
     plt.savefig(loss_plot_filename)
     print(f"Saved training loss plot to: {loss_plot_filename}")
 
+    # --- Save GNN Model State ---
+    model.eval() # Ensure model is in evaluation mode before saving
+    gnn_model_filename = 'gnn_model_state.pt'
+    torch.save(model.state_dict(), gnn_model_filename)
+    print(f"Saved GNN model state to: {gnn_model_filename}")
 
     # --- Save Artifacts ---
     print("Saving trained artifacts...")
