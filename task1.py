@@ -1,27 +1,4 @@
 #!/usr/bin/env python3
-"""
-Citation Graph Builder for NeurIPS & ICML Papers (Internal Only, Title-based Matching)
-
-Task 1: Build a citation graph
-- Directed graph where each node is a paper title (internal dataset only)
-- Edges from paper A → paper B if A cites B and B's title appears in its bibliography
-
-For each paper folder:
-- Extract its title from title.txt
-- Parse .bib entries: extract the title field
-- Parse .bbl entries: extract the sentence after the first \newblock (up to the first period)
-- Normalize extracted cited titles and match against internal titles
-
-Reports:
-1. Number of edges
-2. Number of isolated nodes
-3. Average degree (in-degree, out-degree)
-4. Degree histogram (saved as degree_histogram.png)
-5. Diameter of the graph (on the largest connected component)
-
-Usage:
-    python citation_graph.py --data_dir /path/to/dataset_papers
-"""
 import os
 import glob
 import re
