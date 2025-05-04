@@ -43,7 +43,6 @@ MODEL_NAME = 'all-MiniLM-L6-v2' # MUST match the model used in training
 EMBEDDINGS_PATH = 'final_embeddings.pkl' # These are the 128-dim GNN embeddings
 TITLES_PATH = 'all_titles.pkl'
 GNN_MODEL_PATH = 'gnn_model_state.pt' # Path to saved GNN weights
-K_NEIGHBORS = 10 # Number of papers to return
 
 # --- GNN Dimensions (MUST match train_gnn.py) ---
 GNN_IN_CHANNELS = 384 # Sentence Transformer dimension
@@ -133,7 +132,7 @@ def main():
     ranked_titles = [ordered_titles[i] for i in ranked_indices]
 
     # Prepare the result list (top K or fewer)
-    result = ranked_titles[:K_NEIGHBORS]
+    result = ranked_titles
 
     ################################################
     #               YOUR CODE END                  #
