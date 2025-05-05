@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 MODEL_NAME = 'all-MiniLM-L6-v2' 
 EMBEDDING_DIM = 384 
 OUT_CHANNELS = 128 
-EPOCHS = 1000 
+EPOCHS = 100000
 LR = 0.01
 K_NEIGHBORS = 100 
 
@@ -177,11 +177,11 @@ def main_train(args):
     final_z = None
     losses = [] # <-- Initialize list to store losses
     
-    for epoch in range(1, EPOCHS + 1):
+    for epoch in tqdm(range(1, EPOCHS + 1)):
         loss, z = train(model, data, optimizer)
         final_z = z 
         losses.append(loss) 
-        if epoch % 10 == 0 or epoch == 1: 
+        if epoch % 500 == 0 or epoch == 1: 
             print(f'Epoch: {epoch:03d}, Loss: {loss:.4f}')
 
     print("Training finished.")
