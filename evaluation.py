@@ -101,9 +101,10 @@ def main():
     sim_scores = similarities[0]
     ranked_indices = np.argsort(sim_scores)[::-1]
 
-    ranked_titles = [ordered_titles[i] for i in ranked_indices]
+    ranked_titles_raw = [ordered_titles[i] for i in ranked_indices]
+    result_cleaned_for_print = [title.replace('\n', '').strip() for title in ranked_titles_raw]
 
-    result = ranked_titles
+    result = result_cleaned_for_print
 
     ################################################
     #               DO NOT CHANGE                  #
